@@ -20,10 +20,9 @@ public class Matriz {
 
     public void insertar(int x, int y, Nodo nuevo) {
         int i = 0;
-        
 
         if (columnas.isEmpty()) {
-         
+
             for (i = 0; i < x + 1; i++) {
                 columnas.add(new Lista());
 
@@ -31,8 +30,7 @@ public class Matriz {
             for (i = 0; i < y + 1; i++) {
                 columnas.get(x).fila.add(null);
             }
-            
-            
+
             columnas.get(x).fila.set(y, nuevo);
         } else {
             if (columnas.size() < x + 1) {
@@ -47,8 +45,7 @@ public class Matriz {
             }
             columnas.get(x).fila.set(y, nuevo);
         }
-        
-       
+
     }
 
     public boolean esOcupado(int x, int y) {
@@ -69,14 +66,24 @@ public class Matriz {
         }
     }
 
-    public Nodo Buscar(int x, int y) {
-        try{
-        Nodo objetivo = this.columnas.get(x).fila.get(y);
-        return objetivo;
-        }catch(NullPointerException ex){
-            System.out.println("Me diste negativos");
-            System.out.println("No te doy nada");
-            return null;
+    public void Buscar(int x, int y) {
+        if (this.columnas.isEmpty()) {
+            System.out.println("No hay nada en el estacionamiento");
+        } else {
+            if (x < 0 || y < 0) {
+
+                System.out.println("Me diste negativos");
+                System.out.println("No te doy nada");
+
+            } else {
+                Nodo objetivo = this.columnas.get(x).fila.get(y);
+                if (objetivo == null) {
+                    System.out.println("Este lugar esta vacio");
+                } else {
+                    System.out.println("Encontrado, estos son sus datos");
+                    objetivo.imprimir();
+                }
+            }
         }
 
     }
@@ -95,18 +102,18 @@ public class Matriz {
         }
         int x = 0, y = 0, j = 0, i = 0;
         List<Coord> coordenadas = new ArrayList<Coord>();
- 
+
         Lista b;
         Nodo a;
-        for(i = 0; i<columnas.size();i++){
-            System.out.println(i);
+        for (i = 0; i < columnas.size(); i++) {
+
             b = columnas.get(i);
-            for(j = 0; j<columnas.get(i).fila.size(); j++){
-                System.out.println(j);
+            for (j = 0; j < columnas.get(i).fila.size(); j++) {
+
                 a = b.fila.get(j);
-                System.out.println(a);
-                if(a!= null){
-                    if(a.vehi.propietario.equals(propietario)){
+
+                if (a != null) {
+                    if (a.vehi.propietario.equals(propietario)) {
                         Coord c = new Coord(i, j);
                         coordenadas.add(c);
                     }
