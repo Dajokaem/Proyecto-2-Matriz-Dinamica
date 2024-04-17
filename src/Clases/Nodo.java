@@ -24,6 +24,7 @@ public class Nodo {
     }
 
    public void imprimir(){
+       
        vehi.imprimir();
    }
     

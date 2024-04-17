@@ -23,7 +23,7 @@ public class Matriz {
         
 
         if (columnas.isEmpty()) {
-            System.out.println("Vacio");
+         
             for (i = 0; i < x + 1; i++) {
                 columnas.add(new Lista());
 
@@ -47,13 +47,8 @@ public class Matriz {
             }
             columnas.get(x).fila.set(y, nuevo);
         }
-        for(Lista a: columnas){
-            String n ="";
-            for(Nodo b: a.fila){
-                n = b+" ";
-            }
-            System.out.print(n);
-        }
+        
+       
     }
 
     public boolean esOcupado(int x, int y) {
@@ -75,8 +70,14 @@ public class Matriz {
     }
 
     public Nodo Buscar(int x, int y) {
+        try{
         Nodo objetivo = this.columnas.get(x).fila.get(y);
         return objetivo;
+        }catch(NullPointerException ex){
+            System.out.println("Me diste negativos");
+            System.out.println("No te doy nada");
+            return null;
+        }
 
     }
 
@@ -124,17 +125,7 @@ public class Matriz {
     }
 
     public void BuscarPlaca(String placa) {
-        class Coord {
 
-            public int x;
-            public int y;
-
-            Coord(int x, int y) {
-                this.x = x;
-                this.y = y;
-            }
-
-        }
         int x = 0, y = 0, j = 0;
         List<Coord> coordenadas = new ArrayList<Coord>();
 

@@ -20,8 +20,12 @@ public class Esta2 {
         Matriz estacionamiento = new Matriz();
         int op = 99, x, y;
         do {
+            try{
             menu();
+            
             op = leer.nextInt();
+            
+            
             switch (op) {
                 case 1:
                     Vehiculo v = new Vehiculo();
@@ -40,21 +44,28 @@ public class Esta2 {
                     System.out.println("Gracias, dame la coordenadas donde quieres estacionarlo");
                     do {
                         System.out.println("La coordenada horizontal es?");
+                        System.out.print("X: ");
                         x = leer.nextInt();
+                        System.out.print("Y: ");
                         System.out.println("Y la vertical?");
                         y = leer.nextInt();
                         System.out.println("Gracias, procedere a comprobar si esta ocupado");
-                        if (estacionamiento.esOcupado(x, y)) {
-                            System.out.println("Este espacio esta ocupado");
+                        if (x < 0 || y < 0) {
+                            System.out.println("Me diste negativos");
                             System.out.println("Dame otras coordenadas");
                         } else {
-                            System.out.println("Este espacio esta libre");
-                            System.out.println("Lo insertare");
-                            n.setVehi(v);
-                            estacionamiento.insertar(x, y, n);
-                            System.out.println("Ya fue insertado1");
+                            if (estacionamiento.esOcupado(x, y)) {
+                                System.out.println("Este espacio esta ocupado");
+                                System.out.println("Dame otras coordenadas");
+                            } else {
+                                System.out.println("Este espacio esta libre");
+                                System.out.println("Lo insertare");
+                                n.setVehi(v);
+                                estacionamiento.insertar(x, y, n);
+                                System.out.println("Ya fue insertado1");
 
-                            break;
+                                break;
+                            }
                         }
                     } while (estacionamiento.esOcupado(x, y));
 
@@ -131,9 +142,18 @@ public class Esta2 {
                     x = leer.nextInt();
                     System.out.print("Y: ");
                     y = leer.nextInt();
-                    System.out.println("Gracias, lo eliminare");
-                    estacionamiento.Eliminar(x, y);
-
+                    if (x < 0 || y < 0) {
+                        System.out.println("Me diste negativos");
+                        System.out.println("No borro nada");
+                    }else{
+                        if (estacionamiento.esOcupado(x, y)) {
+                            System.out.println("Gracias, lo eliminare");
+                            estacionamiento.Eliminar(x, y);
+                        } else {
+                            System.out.println("Ese espacio no esta ocupado");
+                            System.out.println("No borrare nada");
+                        }
+                    }
                     break;
                 case 0:
                     System.out.println("Ok, ten un buen dia");
@@ -141,6 +161,10 @@ public class Esta2 {
                 default:
                     System.out.println("Opcion invalida");
                     break;
+            }
+            }catch(Exception ex){
+                System.out.println("No ingreses letras donde se te pide numeros");
+                break;
             }
         } while (op != 0);
     }
