@@ -3,6 +3,8 @@ El proyecto es una matriz ortogonal, en otras palabras una matriz dinamica, que 
 Utilizar el programa es simple, es un programa de consola que se basa en menu de opciones, 
 Para elegir una opcion, se ingresa el numero correspondiente para cada una de estas, 
 Es un programa tipado, por lo que si se ingresa un caracter donde solicita un entero o viceversa, el programa finalizara su funcion, 
+Este programa esta escrito en el lenguaje JAVA usando la version SE 19 para funcionar, pero puede correr sin problemas en JAVA 17, 
+Es requerimiento tener instalado por lo menos la version 17 de JDK para que funcione, 
 
 -Registrar un nuevo vehiculo, 
     Esta opcion se vera al principio, se mostrara como "estacionar un vehiculo", procedera a preguntarte la informacion sobre este, todo esto se mantiene en forma de Cadenas, 
